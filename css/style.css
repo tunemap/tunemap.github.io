@@ -1,11 +1,16 @@
+/* Page */
 html, body, .navbar, .main, .footer {
   height: 100%;
+}
+html {
+  font-family: 'Roboto', sans-serif;
 }
 body {
   margin: 0px;
   display: grid;
   grid-template-rows: 65px auto 35px;
 }
+/* Navbar */
 .navbar {
   background: #FFF;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -21,6 +26,7 @@ body {
 .separator {
   font-size: 28px;
 }
+/* Main */
 .main {
   background: #1db954;
   z-index: 0;
@@ -28,6 +34,53 @@ body {
   flex-direction: column;
   align-items: center;
 }
+.logo {
+  font-weight: 700;
+  font-size: 50px;
+  margin: 40px;
+}
+.instructions-container {
+  background: #FFF;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  width: 60%;
+  padding: 35px;
+  border-radius: 3px;
+}
+h3 {
+  margin-top: 0px;
+}
+p {
+  margin-bottom: 0px;
+}
+.search-container {
+  background: #191314;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 25px;
+  border-radius: 3px;
+  margin-top: 40px;
+  width: 300px;
+}
+.searchbox {
+  display: none;
+  background: #FFF;
+  color: #191314;
+  padding: 5px;
+  border-radius: 4px;
+}
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login {
+  color: rgba(255, 255, 255, 0.9);
+}
+.spotify-logo {
+  height: 50px;
+  width: 50px;
+  margin-right: 15px;
+}
+/* Footer */
 .footer {
   background: #FFF;
   box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.16), 0 -3px 6px rgba(0, 0, 0, 0.23);
