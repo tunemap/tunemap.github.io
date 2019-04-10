@@ -4,11 +4,18 @@ html, body, .navbar, .main, .footer {
 }
 html {
   font-family: 'Roboto', sans-serif;
+  background: #1db954;
 }
 body {
   margin: 0px;
+}
+.viewport {
   display: grid;
-  grid-template-rows: 65px auto 35px;
+  grid-template-rows: 65px auto;
+}
+a {
+  color: #000;
+  text-decoration: none;
 }
 /* Navbar */
 .navbar {
@@ -28,16 +35,19 @@ body {
 }
 /* Main */
 .main {
-  background: #1db954;
   z-index: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 35px;
 }
 .logo {
   font-weight: 700;
   font-size: 50px;
   margin: 40px;
+  background: #FFF;
+  padding: 15px 35px;
+  border-radius: 60px;
 }
 .instructions-container {
   background: #FFF;
@@ -61,7 +71,6 @@ p {
   width: 300px;
 }
 .searchbox {
-  display: none;
   background: #FFF;
   color: #191314;
   padding: 5px 13px;
@@ -76,13 +85,17 @@ p {
   align-items: center;
   justify-content: center;
 }
-.login {
+.login a {
   color: rgba(255, 255, 255, 0.9);
 }
 .spotify-logo {
   height: 50px;
   width: 50px;
   margin-right: 15px;
+}
+.or {
+  text-align: center;
+  margin: 20px;
 }
 /* Footer */
 .footer {
@@ -92,4 +105,9 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  height: 35px;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
 }
