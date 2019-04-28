@@ -2,17 +2,43 @@
 <html>
   <head>
     <title>Example of the Authorization Code flow with Spotify</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="index.css">
   </head>
 
   <body>
     <!--- here is the actual containers for the html and templates are scripts below -->
-    <div class="container">
-      <div id="login">
-        <h1>TuneMap</h1>
-        <a href="/login" class="btn btn-primary">Log in with Spotify</a>
+    <div class="viewport">
+      <div class="navbar">
+        <a href="./index.html">
+          <div class="home"> Home </div>
+        </a>
+        <div class="separator"> | </div>
+        <a href="./about.html">
+          <div class="home"> About </div>
+        </a>
       </div>
+
+      <div class="main">
+        <div class="logo"> TuneMap.me </div>
+        <div class="instructions-container">
+          <h3>Instructions</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+            aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="bottom-container">
+          <input type="text" name="" placeholder="Search..." id="searchbox" class="searchbox">
+          <div class="or"> - OR - </div>
+          <div id="login-container" class="login-container">
+            <img src="/img/Spotify_Icon_RGB_Green.png" alt="Spotify Logo" class="spotify-logo">
+              <div class="login"> 
+                <a href="/login"> Connect to Spotify</a>
+              </div>
+          </div>
+        </div>
+      </div>
+
       <div id="loggedin">
         <div id="user-top-ten">
         </div>
