@@ -12,6 +12,10 @@
       }
       return hashParams;
     }
+
+    var userTopTenImages  = document.getElementById('user-top-ten-template').innerHTML,
+        userTopTenTemplate = Handlebars.compile(userTopTenImages),
+        userTopTenPlaceholder = document.getElementById('user-top-ten');
     
     var userProfileSource = document.getElementById('user-profile-template').innerHTML,
         userProfileTemplate = Handlebars.compile(userProfileSource),
@@ -39,6 +43,16 @@
         oauthPlaceholder.innerHTML = oauthTemplate({
           access_token: access_token,
           refresh_token: refresh_token
+        });
+
+        $.ajax({
+          url: 'https://api.spotify.com/v1/me/top/artists',
+          headers: {
+            'Authorization': 'Bearer ' + access_token
+          },
+          success: function(response) {
+            userTopTenPlaceholder.innerHTML = userTopTenTemplate(response.items);
+          }
         });
     
         $.ajax({

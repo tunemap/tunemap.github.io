@@ -14,6 +14,8 @@
         <a href="/login" class="btn btn-primary">Log in with Spotify</a>
       </div>
       <div id="loggedin">
+        <div id="user-top-ten">
+        </div>
         <div id="user-profile">
         </div>
         <div id="oauth">
@@ -42,6 +44,20 @@
             <dt>Country</dt><dd>{{country}}</dd>
           </dl>
         </div>
+      </div>
+    </script>
+
+    <script id="user-top-ten-template" type="text/x-handlebars-template">
+      <h2>Top Tracks</h2>
+      <div>
+        {{#each this}}
+          <div class="row">
+            <div class="col-md-12">
+              <h2>{{name}}</h2>
+              <img src="{{images.[0].url}}" alt="{{name}}">
+            </div>
+          </div>
+        {{/each}}      
       </div>
     </script>
 
