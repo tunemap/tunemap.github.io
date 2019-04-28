@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Example of the Authorization Code flow with Spotify</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+  </head>
+
+  <body>
+    <!--- here is the actual containers for the html and templates are scripts below -->
+    <div class="viewport">
+      <div class="navbar">
+        <a href="./index.html">
+          <div class="home"> Home </div>
+        </a>
+        <div class="separator"> | </div>
+        <a href="./about.html">
+          <div class="home"> About </div>
+        </a>
+      </div>
+
+      <div class="main">
+        <div class="logo"> TuneMap.me </div>
+      </div>
+
+      <div id="loggedin">
+        <div id="oauth">
+        </div>
+        <div id="user-top-ten">
+        </div>
+        <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
+      </div>
+    </div>
+    <!-- end of actual html -->
+
+    <script id="user-top-ten-template" type="text/x-handlebars-template">
+      <h2>Top Tracks</h2>
+      <div>
+        {{#each this}}
+          <div class="row">
+            <div class="col-md-12">
+              <h2>{{name}}</h2>
+              <img src="{{images.[0].url}}" alt="{{name}}">
+            </div>
+          </div>
+        {{/each}}      
+      </div>
+    </script>
+
+    <script id="oauth-template" type="text/x-handlebars-template">
+      <h2>oAuth info</h2>
+      <dl class="dl-horizontal">
+        <dt>Access token</dt><dd class="text-overflow">{{access_token}}</dd>
+        <dt>Refresh token</dt><dd class="text-overflow">{{refresh_token}}</dd>
+      </dl>
+    </script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="image-map.js"></script>
+  </body>
+</html>
+
