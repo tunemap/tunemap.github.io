@@ -1,14 +1,12 @@
 #login, #loggedin {
   display: none;
 }
-
 .text-overflow {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 500px;
 }
-
 /* Page */
 html, body, .navbar, .main, .footer {
   height: 100%;
@@ -137,70 +135,4 @@ p {
 .cloud-img:hover {
   transform: scale(1.5);
   z-index: 10;
-}
-.img-1 {
-  top: 12%;
-  left: 13%;
-  height: 130px;
-  width: 130px;
-}
-.img-2 {
-  top: 30%;
-  left: 25%;
-  height: 70px;
-  width: 70px;
-}
-.img-3 {
-  top: 41%;
-  left: 29%;
-  height: 170px;
-  width: 170px;
-}
-.img-4 {
-  top: 70%;
-  left: 77%;
-  height: 100px;
-  width: 100px;
-}
-.img-5 {
-  top: 14%;
-  left: 75%;
-  height: 120px;
-  width: 120px;
-}
-.img-6 {
-  top: 51%;
-  left: 72%;
-  height: 70px;
-  width: 70px;
-}
-.img-7 {
-  top: 35%;
-  left: 55%;
-  height: 200px;
-  width: 200px;
-}
-.img-8 {
-  top: 50%;
-  left: 50%;
-  height: 100px;
-  width: 100px;
-}
-.img-9 {
-  top: 13%;
-  left: 45%;
-  height: 100px;
-  width: 100px;
-}
-.img-10 {
-  top: 75%;
-  left: 55%;
-  height: 100px;
-  width: 100px;
-}
-.img-11 {
-  top: 65%;
-  left: 35%;
-  height: 100px;
-  width: 100px;
 }
