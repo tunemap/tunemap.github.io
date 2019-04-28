@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
   <head>
     <title>TuneMap | Imape Map</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
@@ -19,11 +20,9 @@
           <div class="home"> About </div>
         </a>
       </div>
-
       <div class="main">
         <div class="logo"> TuneMap.me </div>
       </div>
-
       <div id="loggedin">
         <div id="oauth">
         </div>
@@ -34,7 +33,6 @@
       <div class="footer"> Made by the TuneMap Team (2019) </div>
     </div>
     <!-- end of actual html -->
-
     <script id="user-top-ten-template" type="text/x-handlebars-template">
       <h2>Top Tracks</h2>
       <div>
@@ -45,10 +43,9 @@
               <img src="{{images.[0].url}}" alt="{{name}}">
             </div>
           </div>
-        {{/each}}      
+        {{/each}}
       </div>
     </script>
-
     <script id="oauth-template" type="text/x-handlebars-template">
       <h2>oAuth info</h2>
       <dl class="dl-horizontal">
@@ -56,10 +53,9 @@
         <dt>Refresh token</dt><dd class="text-overflow">{{refresh_token}}</dd>
       </dl>
     </script>
-
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="image-map.js"></script>
   </body>
-</html>
 
+</html>
