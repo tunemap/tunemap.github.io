@@ -21,7 +21,6 @@
         </a>
       </div>
       <div id="loggedin">
-        <div class="layout-1 photo-container"> </div>
         <div id="user-top-ten"> </div>
         <div id="oauth"> </div>
         <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
@@ -29,9 +28,12 @@
       <div class="footer"> Made by the TuneMap Team (2019) </div>
     </div>
     <!-- end of actual html -->
-    <script id="user-top-ten-template" type="text/x-handlebars-template"> <div>
+    <script id="user-top-ten-template" type="text/x-handlebars-template">
+      <div id="layout-1" class="layout-1 justified-gallery">
         {{#each this}}
-            <img src="{{images.[0].url}}" alt="{{name}}">
+        <a href="{{images.[0].url}}">
+          <img src="{{images.[0].url}}" alt="{{name}}">
+        </a>
         {{/each}}
       </div>
     </script>
@@ -44,8 +46,8 @@
     </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <link rel="stylesheet" href="http://nitinhayaran.github.io/Justified.js/jquery.justified.css">
-    <script src="http://nitinhayaran.github.io/Justified.js/jquery.justified.js"></script>
+    <link rel="stylesheet" href="justifiedGallery.css" />
+    <script src="jquery.justifiedGallery.js"></script>
     <script src="image-map.js"></script>
   </body>
 
