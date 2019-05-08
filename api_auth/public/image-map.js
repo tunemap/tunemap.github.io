@@ -52,6 +52,10 @@
 				},
 				success: function(response) {
 					userTopTenPlaceholder.innerHTML = userTopTenTemplate(response.items);
+					$("#layout-1").justifiedGallery({
+						rowHeight: document.documentElement.clientHeight / 3.5,
+						margins: 5
+					});
 					$('#login').hide();
 					$('#loggedin').show();
 				}
@@ -102,10 +106,3 @@
 		}, false);
 	}
 })();
-
-$(window).load(function() {
-	$("#layout-1").justifiedGallery({
-		rowHeight: document.documentElement.clientHeight / 3.5,
-		margins: 5
-	});
-});
