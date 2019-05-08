@@ -53,8 +53,11 @@
 				success: function(response) {
 					userTopTenPlaceholder.innerHTML = userTopTenTemplate(response.items);
 					$("#layout-1").justifiedGallery({
-						rowHeight: document.documentElement.clientHeight / 4,
-						margins: 5
+						rowHeight: document.documentElement.clientHeight / 2.5,
+						maxRowHeight: document.documentElement.clientHeight / 2.5,
+						margins: 0,
+						lastRow: 'justify',
+						randomize: true
 					});
 					$('#login').hide();
 					$('#loggedin').show();
