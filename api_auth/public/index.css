@@ -15,7 +15,8 @@ html, body {
   font-family: 'Roboto', sans-serif;
   background-image: url("img/background.png");
   background-repeat: repeat-y;
-  background-position: center; /* Center the image */
+  background-position: center;
+  /* Center the image */
   background-size: cover;
 }
 body {
@@ -28,6 +29,13 @@ body {
 a {
   color: #000;
   text-decoration: none;
+}
+a {
+  transition: all 0.5s ease;
+}
+a:hover, a:focus {
+  text-decoration: none;
+  color: #147335;
 }
 /* Navbar */
 .navbar {
