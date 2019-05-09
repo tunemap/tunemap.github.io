@@ -13,7 +13,10 @@ html, body, .navbar, .main, .footer {
 }
 html, body {
   font-family: 'Roboto', sans-serif;
-  background: #1db954;
+  background-image: url("img/background.png");
+  background-repeat: repeat-y;
+  background-position: center; /* Center the image */
+  background-size: cover;
 }
 body {
   margin: 0px;
