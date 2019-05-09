@@ -15,7 +15,8 @@ html, body {
   font-family: 'Roboto', sans-serif;
   background-image: url("img/background.png");
   background-repeat: repeat-y;
-  background-position: center; /* Center the image */
+  background-position: center;
+  /* Center the image */
   background-size: cover;
 }
 body {
@@ -28,6 +29,13 @@ body {
 a {
   color: #000;
   text-decoration: none;
+}
+a {
+  transition: all 0.5s ease;
+}
+a:hover, a:focus {
+  text-decoration: none;
+  color: #147335;
 }
 /* Navbar */
 .navbar {
@@ -124,19 +132,34 @@ p {
   bottom: 0px;
   left: 0px;
 }
-/* Cloud */
-.cloud {
-  position: relative;
-  width: 100%;
-  height: calc(100vh - 65px - 35px);
-}
-.cloud-img {
-  position: absolute;
-  height: 100px;
-  width: 100px;
-  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
-.cloud-img:hover {
-  transform: scale(1.5);
-  z-index: 10;
+/* Mobile Site */
+@media only screen and (max-width: 1000px) {
+  .navbar {
+    height: 75px;
+  }
+  .separator {
+    display: none;
+  }
+  .about, .home {
+    font-size: 26px;
+  }
+  .instructions-container {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .instructions-container h3 {
+    font-size: 28px;
+  }
+  .instructions-container p {
+    font-size: 22px;
+  }
+  .bottom-container {
+    width: 50%;
+  }
+  .login {
+    font-size: 26px;
+  }
+  .footer {
+    font-size: 20px;
+  }
 }
