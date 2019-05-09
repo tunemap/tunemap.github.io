@@ -132,19 +132,33 @@ p {
   bottom: 0px;
   left: 0px;
 }
-/* Cloud */
-.cloud {
-  position: relative;
-  width: 100%;
-  height: calc(100vh - 65px - 35px);
-}
-.cloud-img {
-  position: absolute;
-  height: 100px;
-  width: 100px;
-  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
-.cloud-img:hover {
-  transform: scale(1.5);
-  z-index: 10;
+/* Mobile Site */
+@media only screen and (min-width: 768px) {
+  .navbar {
+    height: 75px;
+  }
+  .separator {
+    display: none;
+  }
+  .about, .home {
+    font-size: 26px;
+  }
+  .instructions-container {
+    width: 100%;
+  }
+  .instructions-container h3 {
+    font-size: 28px;
+  }
+  .instructions-container p {
+    font-size: 22px;
+  }
+  .bottom-container {
+    width: 50%;
+  }
+  .login {
+    font-size: 26px;
+  }
+  .footer {
+    font-size: 20px;
+  }
 }
