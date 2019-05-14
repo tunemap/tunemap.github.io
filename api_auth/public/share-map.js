@@ -17,10 +17,6 @@
 		userTopTenTemplate = Handlebars.compile(userTopTenImages),
 		userTopTenPlaceholder = document.getElementById('user-top-ten');
 
-	var oauthSource = document.getElementById('oauth-template').innerHTML,
-		oauthTemplate = Handlebars.compile(oauthSource),
-		oauthPlaceholder = document.getElementById('oauth');
-
 	var params = getHashParams();
 
 	var access_token = params.access_token,
@@ -34,11 +30,6 @@
 		alert('There was an error during the authentication');
 	} else {
 		if (access_token) {
-			// render oauth info
-			oauthPlaceholder.innerHTML = oauthTemplate({
-				access_token: access_token,
-				refresh_token: refresh_token
-            });
             
             $.ajax({
                 type: 'GET',
@@ -76,7 +67,8 @@
 			$('#loggedin').hide();
 		}
 
-		document.getElementById('obtain-new-token').addEventListener('click', function() {
+		//add event listener to a button to refresh the users token, currently not implemented
+		/*document.getElementById('obtain-new-token').addEventListener('click', function() {
 			$.ajax({
 				url: '/refresh_token',
 				data: {
@@ -89,6 +81,6 @@
 					refresh_token: refresh_token
 				});
 			});
-		}, false);
+		}, false);*/
 	}
 })();

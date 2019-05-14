@@ -98,7 +98,7 @@ app.get('/callback', function(req, res) {
         var access_token = body.access_token,
             refresh_token = body.refresh_token;
 
-        var options = {
+        /*var options = {
           url: 'https://api.spotify.com/v1/me/top/tracks',
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
@@ -109,7 +109,7 @@ app.get('/callback', function(req, res) {
           if (!error && response.statusCode === 200) {
             console.log(body);
           }
-      });
+      });*/
 
         // we can also pass the token to the browser to make requests from there
         res.redirect('/image-map.html#' +
@@ -161,6 +161,7 @@ app.get('/share', function(req, res) {
 
 app.get('/login-share', function(req, res) {
 
+  //generates a random string for the state 
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
 
@@ -180,7 +181,6 @@ app.get('/callbackshare', function(req, res) {
 
   // your application requests refresh and access tokens
   // after checking the state parameter
-
   var code = req.query.code || null;
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
@@ -192,11 +192,12 @@ app.get('/callbackshare', function(req, res) {
       }));
   } else {
     res.clearCookie(stateKey);
+    //ERROR OCCURRS HERE FOR SOME REASON
     var authOptions = {
       url: 'https://accounts.spotify.com/api/token',
       form: {
         code: code,
-        redirect_uri: redirect_uri,
+        redirect_uri: redirect_uri_share,
         grant_type: 'authorization_code'
       },
       headers: {
@@ -206,34 +207,13 @@ app.get('/callbackshare', function(req, res) {
     };
 
     request.post(authOptions, function(error, response, body) {
+      console.log(error);
+      console.log(response.statusCode);
       if (!error && response.statusCode === 200) {
-
+        console.log(error);
+        console.log(response.statusCode);
         var access_token = body.access_token,
             refresh_token = body.refresh_token;
-
-        var options = {
-          url: 'https://api.spotify.com/v1/me',
-          headers: { 'Authorization': 'Bearer ' + access_token },
-          json: true
-        };
-
-        // use the access token to access the Spotify Web API
-        request.get(options, function(error, response, body) {
-          console.log(body);
-        });
-
-        var options2 = {
-          url: 'https://api.spotify.com/v1/me/top/tracks',
-          headers: { 'Authorization': 'Bearer ' + access_token },
-          json: true
-      };
-  
-      // use the access token to access the Spotify Web API
-      request.get(options2, function(error, response, body) {
-          if (!error && response.statusCode === 200) {
-            console.log(body);
-          }
-      });
 
       // we can also pass the token to the browser to make requests from there
       res.redirect('/share-map.html#' +
@@ -242,7 +222,10 @@ app.get('/callbackshare', function(req, res) {
           refresh_token: refresh_token,
           idValue: idValue
       }));
-      } else {
+      } //THIS ERROR ROUTE RUNS INSTEAD OF OPENING SHARE MAP 
+        else {
+          console.log(error);
+          console.log(response.statusCode);
         res.redirect('/#' +
           querystring.stringify({
             error: 'invalid_token'

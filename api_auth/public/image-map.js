@@ -13,22 +13,12 @@
 		return hashParams;
 	}
 
+	//grab element template and compile it in handlebars
 	var userTopTenImages = document.getElementById('user-top-ten-template').innerHTML,
 		userTopTenTemplate = Handlebars.compile(userTopTenImages),
 		userTopTenPlaceholder = document.getElementById('user-top-ten');
 
-	// var userProfileSource = document.getElementById('user-profile-template').innerHTML,
-	//     userProfileTemplate = Handlebars.compile(userProfileSource),
-	//     userProfilePlaceholder = document.getElementById('user-profile');
-
-	var oauthSource = document.getElementById('oauth-template').innerHTML,
-		oauthTemplate = Handlebars.compile(oauthSource),
-		oauthPlaceholder = document.getElementById('oauth');
-
-	// var tracksSource = document.getElementById('top-tracks-template').innerHTML,
-	//     topTracksTemplate = Handlebars.compile(tracksSource),
-	//     tracksPlaceholder = document.getElementById('top-tracks');
-
+	//grab the hashed params from the url aka access and refresh tokens
 	var params = getHashParams();
 
 	var access_token = params.access_token,
@@ -40,11 +30,6 @@
 		alert('There was an error during the authentication');
 	} else {
 		if (access_token) {
-			// render oauth info
-			oauthPlaceholder.innerHTML = oauthTemplate({
-				access_token: access_token,
-				refresh_token: refresh_token
-			});
 
 			$.ajax({
 				url: 'https://api.spotify.com/v1/me/top/artists',
@@ -71,37 +56,14 @@
 					$('#loggedin').show();
 				}
 			});
-
-			// $.ajax({
-			//     url: 'https://api.spotify.com/v1/me',
-			//     headers: {
-			//       'Authorization': 'Bearer ' + access_token
-			//     },
-			//     success: function(response) {
-			//       userProfilePlaceholder.innerHTML = userProfileTemplate(response);
-
-			//       $('#login').hide();
-			//       $('#loggedin').show();
-			//     }
-			// });
-
-
-			// $.ajax({
-			//     url: 'https://api.spotify.com/v1/me/top/tracks',
-			//     headers: {
-			//       'Authorization': 'Bearer ' + access_token
-			//     },
-			//     success: function(response) {
-			//       tracksPlaceholder.innerHTML = topTracksTemplate(response.items);
-			//     }
-			// });
 		} else {
 			// render initial screen
 			$('#login').show();
 			$('#loggedin').hide();
 		}
 
-		document.getElementById('obtain-new-token').addEventListener('click', function() {
+		//add event listener to a button to refresh the users token, currently not implemented
+		/*document.getElementById('obtain-new-token').addEventListener('click', function() {
 			$.ajax({
 				url: '/refresh_token',
 				data: {
@@ -114,7 +76,9 @@
 					refresh_token: refresh_token
 				});
 			});
-		}, false);
+		}, false);*/
+
+		//share functionality of your own personal music map
 		var baseURL = 'http://localhost:8888/share?id=';
 		document.getElementById('share-map-btn').addEventListener('click', function() {
 			$.ajax({
@@ -122,7 +86,7 @@
 				url: 'http://localhost:3000/share',
 				data: {
 					id: '',
-					artists: 'ids='+artistsIds
+					artists: /*'ids='+*/artistsIds
 				},
 				success: function(data){
 					console.log(data.id);
@@ -133,6 +97,7 @@
 				}
 			})
 		}, false);
+		
 		$.ajax({
 			type: 'GET',
 			url: 'http://localhost:3000/share',
