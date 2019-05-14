@@ -50,6 +50,8 @@ a:hover, a:focus {
 .about, .home {
   padding: 15px;
   font-size: 20px;
+  background-color: #fff;
+  border: none;
 }
 .separator {
   font-size: 28px;
