@@ -1,4 +1,3 @@
-
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 const path = require('path');
@@ -30,25 +29,21 @@ var stateKey = 'spotify_auth_state';
 //Init app
 var app = express();
 
-//set up templates
-//app.set('public', path.join(__dirname, 'public'));
-//app.set('view engine', 'handlebars');
-
 //middleware that serves all files in /public to / on server
 app.use(express.static(__dirname + '/public'))
    .use(cors())
    .use(cookieParser());
 
-/*app.get('/', function(req, res){
-  res.render('index');
-});*/
-
 app.get('/login', function(req, res) {
 
+  //generates a random string for the state 
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
 
-  // your application requests authorization
+  /**application requests authorization based upon the scoped we give it here
+  **'http://localhost:8888/callback'; is our redirect URI so after spotify handles login 
+  **it will route back to that endpoint of our app
+  */
   var scope = 'user-read-private user-top-read user-read-email';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
@@ -60,15 +55,17 @@ app.get('/login', function(req, res) {
     }));
 });
 
+//HERE IS THE REDIRECT URI HANDLER
 app.get('/callback', function(req, res) {
 
-  // your application requests refresh and access tokens
+  // application requests refresh and access tokens
   // after checking the state parameter
 
   var code = req.query.code || null;
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
 
+  //error handler for a state mismatch
   if (state === null || state !== storedState) {
     res.redirect('/#' +
       querystring.stringify({
@@ -89,31 +86,25 @@ app.get('/callback', function(req, res) {
       json: true
     };
 
+    /*
+    we are sending a post request to https://accounts.spotify.com/api/token in order to turn our
+    authorization code into a access token and refresh token
+    */
     request.post(authOptions, function(error, response, body) {
       if (!error && response.statusCode === 200) {
 
+        //save tokens
         var access_token = body.access_token,
             refresh_token = body.refresh_token;
 
         var options = {
-          url: 'https://api.spotify.com/v1/me',
-          headers: { 'Authorization': 'Bearer ' + access_token },
-          json: true
-        };
-
-        // use the access token to access the Spotify Web API
-        request.get(options, function(error, response, body) {
-          console.log(body);
-        });
-
-        var options2 = {
           url: 'https://api.spotify.com/v1/me/top/tracks',
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
       };
   
       // use the access token to access the Spotify Web API
-      request.get(options2, function(error, response, body) {
+      request.get(options, function(error, response, body) {
           if (!error && response.statusCode === 200) {
             console.log(body);
           }
@@ -135,6 +126,7 @@ app.get('/callback', function(req, res) {
   }
 });
 
+//endpoint allows for the refresh of a token
 app.get('/refresh_token', function(req, res) {
 
   // requesting access token from refresh token
