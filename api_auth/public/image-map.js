@@ -25,7 +25,6 @@
 		refresh_token = params.refresh_token,
 		error = params.error;
 
-	var artistsIds = '';
 	if (error) {
 		alert('There was an error during the authentication');
 	} else {
@@ -37,13 +36,6 @@
 					'Authorization': 'Bearer ' + access_token
 				},
 				success: function(response) {
-					for (var i = 0; i < response.items.length; i++) {
-						if (i === response.items.length-1){
-							artistsIds += response.items[i].id;
-						} else{
-							artistsIds += response.items[i].id += ',';
-						}
-					}
 					userTopTenPlaceholder.innerHTML = userTopTenTemplate(response.items);
 					$("#layout-1").justifiedGallery({
 						rowHeight: document.documentElement.clientHeight / 2.5,
@@ -88,34 +80,5 @@
 				});
 			});
 		}, false);
-		var baseURL = 'http://localhost:8888/share?id=';
-		document.getElementById('share-map-btn').addEventListener('click', function() {
-			$.ajax({
-				type: 'POST',
-				url: 'http://localhost:3000/share',
-				data: {
-					id: '',
-					artists: 'ids='+artistsIds
-				},
-				success: function(data){
-					console.log(data.id);
-					alert('Share this url with your friend: '+baseURL+data.id)
-				},
-				error: function(error){
-					console.log(error);
-				}
-			})
-		}, false);
-		$.ajax({
-			type: 'GET',
-			url: 'http://localhost:3000/share',
-			dataType: 'JSON',
-			success: function(data){
-				console.log(data);
-			},
-			error: function(error){
-				console.log(error);
-			}
-		})
 	}
 })();
