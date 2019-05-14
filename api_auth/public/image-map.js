@@ -13,12 +13,22 @@
 		return hashParams;
 	}
 
-	//handlebars templates compilation and grabbing
 	var userTopTenImages = document.getElementById('user-top-ten-template').innerHTML,
 		userTopTenTemplate = Handlebars.compile(userTopTenImages),
 		userTopTenPlaceholder = document.getElementById('user-top-ten');
 
-	//decoding of the uri hash params that are access_token and refresh_token
+	// var userProfileSource = document.getElementById('user-profile-template').innerHTML,
+	//     userProfileTemplate = Handlebars.compile(userProfileSource),
+	//     userProfilePlaceholder = document.getElementById('user-profile');
+
+	var oauthSource = document.getElementById('oauth-template').innerHTML,
+		oauthTemplate = Handlebars.compile(oauthSource),
+		oauthPlaceholder = document.getElementById('oauth');
+
+	// var tracksSource = document.getElementById('top-tracks-template').innerHTML,
+	//     topTracksTemplate = Handlebars.compile(tracksSource),
+	//     tracksPlaceholder = document.getElementById('top-tracks');
+
 	var params = getHashParams();
 
 	var access_token = params.access_token,
@@ -29,6 +39,11 @@
 		alert('There was an error during the authentication');
 	} else {
 		if (access_token) {
+			// render oauth info
+			oauthPlaceholder.innerHTML = oauthTemplate({
+				access_token: access_token,
+				refresh_token: refresh_token
+			});
 
 			$.ajax({
 				url: 'https://api.spotify.com/v1/me/top/artists',
@@ -49,6 +64,19 @@
 				}
 			});
 
+			// $.ajax({
+			//     url: 'https://api.spotify.com/v1/me',
+			//     headers: {
+			//       'Authorization': 'Bearer ' + access_token
+			//     },
+			//     success: function(response) {
+			//       userProfilePlaceholder.innerHTML = userProfileTemplate(response);
+
+			//       $('#login').hide();
+			//       $('#loggedin').show();
+			//     }
+			// });
+
 
 			// $.ajax({
 			//     url: 'https://api.spotify.com/v1/me/top/tracks',
@@ -65,7 +93,6 @@
 			$('#loggedin').hide();
 		}
 
-		//event listener to refresh token not currently being used
 		document.getElementById('obtain-new-token').addEventListener('click', function() {
 			$.ajax({
 				url: '/refresh_token',
