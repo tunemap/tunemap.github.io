@@ -86,7 +86,7 @@
 				url: 'http://localhost:3000/share',
 				data: {
 					id: '',
-					artists: /*'ids='+*/artistsIds
+					artists:'ids='+artistsIds
 				},
 				success: function(data){
 					console.log(data.id);
@@ -97,7 +97,7 @@
 				}
 			})
 		}, false);
-		
+
 		$.ajax({
 			type: 'GET',
 			url: 'http://localhost:3000/share',
