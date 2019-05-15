@@ -124,6 +124,7 @@
 					console.log(data.id);
 					//add modal here
 					modal.style.display = "block";
+
 					document.getElementById("body-text").innerHTML = 'Share this url with your friend: ';
 					let share_url = document.getElementById('share-url');
 					share_url.innerHTML = baseURL+data.id;

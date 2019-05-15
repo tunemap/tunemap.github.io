@@ -169,7 +169,8 @@ p {
   background-color: #fefefe;
   margin: auto;
   padding: 0;
-  border: 1px solid #888;
+  /*border: 1px solid #888;*/
+  border: 1px solid rgb(44, 44, 44);
   width: 80%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   -webkit-animation-name: animatetop;
@@ -192,26 +193,29 @@ p {
 /* The Close Button */
 .close {
   color: white;
-  float: right;
+  margin-left: auto;
   font-size: 28px;
   font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-  color: #000;
+  color: white;
   text-decoration: none;
   cursor: pointer;
 }
 
 .modal-header {
   padding: 2px 16px;
-  background-color: #1DB954;
+  background-color: #191314;
   color: white;
+  display: flex;
+  flex-direction: row;
 }
 
 .modal-body {
   padding: 2px 16px;
+  display: flex;
 }
 
 #body-text, #share-url {
@@ -221,6 +225,8 @@ p {
 
 #share-url {
   cursor: pointer;
+  display: inline-block;
+  margin-left: .5em;
 }
 
 #share-url:hover {
@@ -229,7 +235,7 @@ p {
 
 .modal-footer {
   padding: 2px 16px;
-  background-color: #1DB954;
+  background-color: #191314;
   color: white;
 }
 /*                               */
