@@ -6,7 +6,7 @@ body #oauth {
 }
 .footer {
   position: relative;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 #layout-1 img {
   filter: brightness(90%);
