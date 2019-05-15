@@ -36,6 +36,13 @@
                 url: 'http://localhost:3000/share?id=' + idValue,
                 dataType: 'JSON',
                 success: function(data){
+					console.log(data);
+					let from_user = document.getElementById('username');
+					from_user.innerHTML = data[0].user + "'s MusicMap";
+					from_user.onclick = function() {
+						location.assign(data[0].username_url);
+					}
+
                     $.ajax({
                         url: 'https://api.spotify.com/v1/artists',
                         data: data[0].artists,

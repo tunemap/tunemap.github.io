@@ -83,6 +83,13 @@ a:hover, a:focus {
   align-items: center;
   justify-content: center;
 }
+
+#username {
+  color: white;
+  font-weight: 700;
+  font-size: 4em;
+}
+
 h3 {
   margin-top: 0px;
 }

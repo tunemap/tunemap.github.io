@@ -62,6 +62,18 @@
 			$('#loggedin').hide();
 		}
 
+		let username = '';
+		username_url = '';
+		$.ajax({
+			url: 'https://api.spotify.com/v1/me',
+			headers: {
+				'Authorization': 'Bearer ' + access_token
+			}
+		}).done(function(data) {
+			username = data.display_name;
+			username_url = data.external_urls.spotify;
+		});
+
 		//add event listener to a button to refresh the users token, currently not implemented
 		/*document.getElementById('obtain-new-token').addEventListener('click', function() {
 			$.ajax({
@@ -86,7 +98,9 @@
 				url: 'http://localhost:3000/share',
 				data: {
 					id: '',
-					artists:'ids='+artistsIds
+					artists:'ids='+artistsIds,
+					user: username,
+					username_url: username_url
 				},
 				success: function(data){
 					console.log(data.id);
