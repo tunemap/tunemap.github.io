@@ -55,7 +55,7 @@
 								rowHeight: document.documentElement.clientHeight / 2.5,
 								maxRowHeight: document.documentElement.clientHeight / 2.5,
 								margins: 0,
-								lastRow: 'hide',
+								lastRow: 'justify',
 								randomize: true
 							});
 							$('#login').hide();
