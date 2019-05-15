@@ -99,7 +99,9 @@ a:hover, a:focus {
 
 #username:hover {
   cursor: pointer;
-  color: #ccc;
+  /*color: #ccc;*/
+  color: black;
+  background-color: #FFF;
 }
 
 /*                              */
