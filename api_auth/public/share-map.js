@@ -21,21 +21,21 @@
 
 	var access_token = params.access_token,
 		refresh_token = params.refresh_token,
-        error = params.error,
-        idValue = params.idValue
+		error = params.error,
+		idValue = params.idValue
 
-    console.log(idValue);
+	console.log(idValue);
 
 	if (error) {
 		alert('There was an error during the authentication');
 	} else {
 		if (access_token) {
-            
-            $.ajax({
-                type: 'GET',
-                url: 'http://localhost:3000/share?id=' + idValue,
-                dataType: 'JSON',
-                success: function(data){
+
+			$.ajax({
+				type: 'GET',
+				url: 'http://localhost:3000/share?id=' + idValue,
+				dataType: 'JSON',
+				success: function(data) {
 					console.log(data);
 					let from_user = document.getElementById('username');
 					from_user.innerHTML = data[0].user + "'s MusicMap";
@@ -43,30 +43,30 @@
 						location.assign(data[0].username_url);
 					}
 
-                    $.ajax({
-                        url: 'https://api.spotify.com/v1/artists',
-                        data: data[0].artists,
-                        headers: {
-                            'Authorization': 'Bearer ' + access_token
-                        },
-                        success: function(response) {
-                            userTopTenPlaceholder.innerHTML = userTopTenTemplate(response.artists);
-                            $("#layout-1").justifiedGallery({
-                            	rowHeight: document.documentElement.clientHeight / 2.5,
-                            	maxRowHeight: document.documentElement.clientHeight / 2.5,
-                            	margins: 0,
-                            	lastRow: 'justify',
-                            	randomize: true
-                            });
-                            $('#login').hide();
-                            $('#loggedin').show();
-                        }
-                    });
-                },
-                error: function(error){
-                    console.log(error);
-                }
-            })
+					$.ajax({
+						url: 'https://api.spotify.com/v1/artists',
+						data: data[0].artists,
+						headers: {
+							'Authorization': 'Bearer ' + access_token
+						},
+						success: function(response) {
+							userTopTenPlaceholder.innerHTML = userTopTenTemplate(response.artists);
+							$("#layout-1").justifiedGallery({
+								rowHeight: document.documentElement.clientHeight / 2.5,
+								maxRowHeight: document.documentElement.clientHeight / 2.5,
+								margins: 0,
+								lastRow: 'hide',
+								randomize: true
+							});
+							$('#login').hide();
+							$('#loggedin').show();
+						}
+					});
+				},
+				error: function(error) {
+					console.log(error);
+				}
+			})
 
 		} else {
 			// render initial screen

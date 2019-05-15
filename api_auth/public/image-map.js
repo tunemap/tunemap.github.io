@@ -13,7 +13,7 @@
 		return hashParams;
 	}
 
-	//grab modal 
+	//grab modal
 	var modal = document.getElementById("myModal");
 
 	// Get the <span> element that closes the modal
@@ -22,15 +22,15 @@
 	// When the user clicks on <span> (x), close the modal
 	span.onclick = function() {
 		modal.style.display = "none";
-  	}
-  
+	}
+
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
 		if (event.target == modal) {
-		modal.style.display = "none";
+			modal.style.display = "none";
 		}
 	}
-  
+
 	//grab element template and compile it in handlebars
 	var userTopTenImages = document.getElementById('user-top-ten-template').innerHTML,
 		userTopTenTemplate = Handlebars.compile(userTopTenImages),
@@ -56,9 +56,9 @@
 				},
 				success: function(response) {
 					for (var i = 0; i < response.items.length; i++) {
-						if (i === response.items.length-1){
+						if (i === response.items.length - 1) {
 							artistsIds += response.items[i].id;
-						} else{
+						} else {
 							artistsIds += response.items[i].id += ',';
 						}
 					}
@@ -67,7 +67,7 @@
 						rowHeight: document.documentElement.clientHeight / 2.5,
 						maxRowHeight: document.documentElement.clientHeight / 2.5,
 						margins: 0,
-						lastRow: 'justify',
+						lastRow: 'hide',
 						randomize: true
 					});
 					$('#login').hide();
@@ -116,25 +116,25 @@
 				url: 'http://localhost:3000/share',
 				data: {
 					id: '',
-					artists:'ids='+artistsIds,
+					artists: 'ids=' + artistsIds,
 					user: username,
 					username_url: username_url
 				},
-				success: function(data){
+				success: function(data) {
 					console.log(data.id);
 					//add modal here
 					modal.style.display = "block";
 
 					document.getElementById("body-text").innerHTML = 'Share this url with your friend: ';
 					let share_url = document.getElementById('share-url');
-					share_url.innerHTML = baseURL+data.id;
+					share_url.innerHTML = baseURL + data.id;
 					share_url.onclick = function() {
-						location.assign(baseURL+data.id);
+						location.assign(baseURL + data.id);
 					}
 
 					//alert('Share this url with your friend: '+baseURL+data.id)
 				},
-				error: function(error){
+				error: function(error) {
 					console.log(error);
 				}
 			})
@@ -144,10 +144,10 @@
 			type: 'GET',
 			url: 'http://localhost:3000/share',
 			dataType: 'JSON',
-			success: function(data){
+			success: function(data) {
 				console.log(data);
 			},
-			error: function(error){
+			error: function(error) {
 				console.log(error);
 			}
 		})
