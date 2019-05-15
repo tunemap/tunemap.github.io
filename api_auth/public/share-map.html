@@ -54,12 +54,30 @@
     <!-- end of actual html -->
     <script id="user-top-ten-template" type="text/x-handlebars-template">
       <div id="layout-1" class="layout-1 justified-gallery">
-        {{#each this}}
-        <a href="{{external_urls.spotify}}">
-          <img src="{{images.[0].url}}" alt="{{name}}">
-        </a>
-        {{/each}}
-      </div>
+          {{#each this}}
+          <a href="{{external_urls.spotify}}" class="container">
+            <img src="{{images.[0].url}}" alt="">
+            <div class="overlay">
+              <div class="text">
+                <div class="hover-header">
+                  {{name}}
+                </div>
+                <div class="hover-field">
+                  {{followers.total}} followers
+                  <br>
+                  <span class="hover-popularity">
+                      {{popularity}}%
+                  </span>popularity
+                  <br>
+                    {{#each genres}}
+                    {{this}}. 
+                    {{/each}}
+                </div>
+              </div>
+            </div>
+          </a>
+          {{/each}}
+        </div>
     </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
