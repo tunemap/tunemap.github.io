@@ -15,13 +15,11 @@ body #oauth {
 #layout-1 img:hover {
   filter: brightness(120%);
 }
-
 .container {
   position: absolute;
   width: 50%;
   height: 50%;
 }
-
 .overlay {
   position: absolute;
   top: 0;
@@ -34,12 +32,11 @@ body #oauth {
   transition: .5s ease;
   background-color: #147335;
   overflow: scroll;
+  overflow: hidden;
 }
-
 .container:hover .overlay {
-  opacity: 0.8;
+  opacity: 0.9;
 }
-
 .text {
   color: white;
   font-size: 20px;
@@ -52,11 +49,9 @@ body #oauth {
   transform: translate(-50%, -50%);
   text-align: left;
 }
-
-.text > .hover-header {
+.text>.hover-header {
   font-size: 50px;
 }
-
 .hover-followers, .hover-popularity {
   font-weight: bold;
   font-size: 30px;
