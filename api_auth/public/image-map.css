@@ -39,7 +39,7 @@ body #oauth {
 }
 .text {
   color: white;
-  font-size: 20px;
+  font-size: 120%;
   position: relative;
   padding-left: 1em;
   top: 50%;
@@ -50,9 +50,10 @@ body #oauth {
   text-align: left;
 }
 .text>.hover-header {
-  font-size: 50px;
+  font-size: 200%;
 }
 .hover-followers, .hover-popularity {
   font-weight: bold;
-  font-size: 30px;
+  font-size: 130%;
+}
 }
