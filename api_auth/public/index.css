@@ -78,32 +78,28 @@ a:hover, a:focus {
   width: 60%;
   padding: 35px;
   border-radius: 3px;
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-
 /* added for username on Share Page */
 .center_username {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 #username {
   color: white;
   font-weight: 700;
   font-size: 4em;
 }
-
 #username:hover {
   cursor: pointer;
   /*color: #ccc;*/
   color: black;
   background-color: #FFF;
 }
-
 /*                              */
 h3 {
   margin-top: 0px;
@@ -146,50 +142,65 @@ p {
   text-align: center;
   margin: 20px;
 }
-
 /* added for modal on Share Page */
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
 }
-
 /* Modal Content */
 .modal-content {
   position: relative;
-  background-color: #fefefe;
+  background-color: #242425;
   margin: auto;
   padding: 0;
-  /*border: 1px solid #888;*/
-  border: 1px solid rgb(44, 44, 44);
   width: 80%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
-  animation-duration: 0.4s
+  animation-duration: 0.4s;
+  padding: 20px;
 }
-
 /* Add Animation */
 @-webkit-keyframes animatetop {
-  from {top:-300px; opacity:0} 
-  to {top:0; opacity:1}
+  from {
+    top: -300px;
+    opacity: 0
+  }
+  to {
+    top: 0;
+    opacity: 1
+  }
 }
-
 @keyframes animatetop {
-  from {top:-300px; opacity:0}
-  to {top:0; opacity:1}
+  from {
+    top: -300px;
+    opacity: 0
+  }
+  to {
+    top: 0;
+    opacity: 1
+  }
 }
-
 /* The Close Button */
 .close {
   color: white;
@@ -197,49 +208,52 @@ p {
   font-size: 28px;
   font-weight: bold;
 }
-
 .close:hover,
 .close:focus {
   color: white;
   text-decoration: none;
   cursor: pointer;
 }
-
 .modal-header {
-  padding: 2px 16px;
+  padding: 20px;
   background-color: #191314;
   color: white;
   display: flex;
   flex-direction: row;
+  border: none;
+  border-radius: 4px;
 }
-
+.modal-header h2 {
+  margin: auto 0;
+}
+.modal-content h3 {
+  font-size: 13px;
+}
 .modal-body {
-  padding: 2px 16px;
+  padding-top: 30px;
+  padding-bottom: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
   display: flex;
+  color: #FFF;
 }
-
 #body-text, #share-url {
-  font-size: 1em;
-  font-weight: bold;
+  font-size: 16px;
 }
-
 #share-url {
   cursor: pointer;
   display: inline-block;
   margin-left: .5em;
 }
-
 #share-url:hover {
   color: #1DB954;
 }
-
 .modal-footer {
   padding: 2px 16px;
-  background-color: #191314;
   color: white;
+  border: none;
 }
 /*                               */
-
 /* Footer */
 .footer {
   background: #FFF;
