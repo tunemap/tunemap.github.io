@@ -13,6 +13,24 @@
 		return hashParams;
 	}
 
+	//grab modal 
+	var modal = document.getElementById("myModal");
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+		modal.style.display = "none";
+  	}
+  
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+		modal.style.display = "none";
+		}
+	}
+  
 	//grab element template and compile it in handlebars
 	var userTopTenImages = document.getElementById('user-top-ten-template').innerHTML,
 		userTopTenTemplate = Handlebars.compile(userTopTenImages),
@@ -104,7 +122,16 @@
 				},
 				success: function(data){
 					console.log(data.id);
-					alert('Share this url with your friend: '+baseURL+data.id)
+					//add modal here
+					modal.style.display = "block";
+					document.getElementById("body-text").innerHTML = 'Share this url with your friend: ';
+					let share_url = document.getElementById('share-url');
+					share_url.innerHTML = baseURL+data.id;
+					share_url.onclick = function() {
+						location.assign(baseURL+data.id);
+					}
+
+					//alert('Share this url with your friend: '+baseURL+data.id)
 				},
 				error: function(error){
 					console.log(error);
