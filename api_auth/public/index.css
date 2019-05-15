@@ -84,12 +84,25 @@ a:hover, a:focus {
   justify-content: center;
 }
 
+/* added for username on Share Page */
+.center_username {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #username {
   color: white;
   font-weight: 700;
   font-size: 4em;
 }
 
+#username:hover {
+  cursor: pointer;
+  color: #ccc;
+}
+
+/*                              */
 h3 {
   margin-top: 0px;
 }
