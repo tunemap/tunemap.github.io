@@ -272,7 +272,7 @@ p {
   .instructions-container h3 {
     font-size: 28px;
   }
-  .instructions-container p {
+  .instructions-container p, .instructions-container li {
     font-size: 22px;
   }
   .bottom-container {
