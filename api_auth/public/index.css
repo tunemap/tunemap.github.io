@@ -37,6 +37,15 @@ a:hover, a:focus {
   text-decoration: none;
   color: #147335;
 }
+button.home {
+  transition: all 0.5s ease;
+}
+button.home:hover {
+  color: #147335;
+}
+button.home:focus {
+  outline: none;
+}
 /* Navbar */
 .navbar {
   background: #FFF;
@@ -268,13 +277,13 @@ p {
   bottom: 0px;
   left: 0px;
 }
+.separator {
+  display: none;
+}
 /* Mobile Site */
 @media only screen and (max-width: 1000px) {
   .navbar {
     height: 75px;
-  }
-  .separator {
-    display: none;
   }
   .about, .home {
     font-size: 26px;
