@@ -15,7 +15,7 @@ var redirect_uri_share = 'http://localhost:8888/callbackshare'; // Your redirect
  * @param  {number} length The length of the string
  * @return {string} The generated string
  */
-var generateRandomString = function(length) {
+var generateRandomString = function (length) {
   var text = '';
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -27,21 +27,21 @@ var generateRandomString = function(length) {
 
 var stateKey = 'spotify_auth_state';
 
-//Init app
+// Init app
 var app = express();
 
-//middleware that serves all files in /public to / on server
+// middleware that serves all files in /public to / on server
 app.use(express.static(__dirname + '/public'))
-   .use(cors())
-   .use(cookieParser());
+  .use(cors())
+  .use(cookieParser());
 
 app.get('/login', function(req, res) {
 
-  //generates a random string for the state 
+  // generates a random string for the state 
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
 
-  /**application requests authorization based upon the scoped we give it here
+  /* * application requests authorization based upon the scoped we give it here
   **'http://localhost:8888/callback'; is our redirect URI so after spotify handles login 
   **it will route back to that endpoint of our app
   */
@@ -56,9 +56,8 @@ app.get('/login', function(req, res) {
     }));
 });
 
-//HERE IS THE REDIRECT URI HANDLER
-app.get('/callback', function(req, res) {
-
+// HERE IS THE REDIRECT URI HANDLER
+app.get('/callback', function (req, res) {
   // application requests refresh and access tokens
   // after checking the state parameter
 
@@ -66,7 +65,7 @@ app.get('/callback', function(req, res) {
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
 
-  //error handler for a state mismatch
+  // error handler for a state mismatch
   if (state === null || state !== storedState) {
     res.redirect('/#' +
       querystring.stringify({
@@ -91,14 +90,13 @@ app.get('/callback', function(req, res) {
     we are sending a post request to https://accounts.spotify.com/api/token in order to turn our
     authorization code into a access token and refresh token
     */
-    request.post(authOptions, function(error, response, body) {
+    request.post(authOptions, function (error, response, body) {
       if (!error && response.statusCode === 200) {
+        // save tokens
+        var access_token = body.access_token;
+        var refresh_token = body.refresh_token;
 
-        //save tokens
-        var access_token = body.access_token,
-            refresh_token = body.refresh_token;
-
-        /*var options = {
+        /* var options = {
           url: 'https://api.spotify.com/v1/me/top/tracks',
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
@@ -109,7 +107,7 @@ app.get('/callback', function(req, res) {
           if (!error && response.statusCode === 200) {
             console.log(body);
           }
-      });*/
+      }); */
 
         // we can also pass the token to the browser to make requests from there
         res.redirect('/image-map.html#' +
@@ -127,9 +125,8 @@ app.get('/callback', function(req, res) {
   }
 });
 
-//endpoint allows for the refresh of a token
-app.get('/refresh_token', function(req, res) {
-
+// endpoint allows for the refresh of a token
+app.get('/refresh_token', function (req, res) {
   // requesting access token from refresh token
   var refresh_token = req.query.refresh_token;
   var authOptions = {
@@ -142,7 +139,7 @@ app.get('/refresh_token', function(req, res) {
     json: true
   };
 
-  request.post(authOptions, function(error, response, body) {
+  request.post(authOptions, function (error, response, body) {
     if (!error && response.statusCode === 200) {
       var access_token = body.access_token;
       res.send({
@@ -154,14 +151,14 @@ app.get('/refresh_token', function(req, res) {
 
 var idValue;
 
-app.get('/share', function(req, res) {
+app.get('/share', function (req, res) {
   idValue = req.query.id;
   res.redirect('http://localhost:8888/login-share');
 });
 
 app.get('/login-share', function(req, res) {
 
-  //generates a random string for the state 
+  // generates a random string for the state
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
 
@@ -177,8 +174,7 @@ app.get('/login-share', function(req, res) {
     }));
 });
 
-app.get('/callbackshare', function(req, res) {
-
+app.get('/callbackshare', function (req, res) {
   // your application requests refresh and access tokens
   // after checking the state parameter
   var code = req.query.code || null;
@@ -192,7 +188,6 @@ app.get('/callbackshare', function(req, res) {
       }));
   } else {
     res.clearCookie(stateKey);
-    //ERROR OCCURRS HERE FOR SOME REASON
     var authOptions = {
       url: 'https://accounts.spotify.com/api/token',
       form: {
@@ -206,30 +201,29 @@ app.get('/callbackshare', function(req, res) {
       json: true
     };
 
-    request.post(authOptions, function(error, response, body) {
+    request.post(authOptions, function (error, response, body) {
       console.log(error);
       console.log(response.statusCode);
       if (!error && response.statusCode === 200) {
         console.log(error);
         console.log(response.statusCode);
-        var access_token = body.access_token,
-            refresh_token = body.refresh_token;
+        var access_token = body.access_token;
+        var refresh_token = body.refresh_token;
 
-      // we can also pass the token to the browser to make requests from there
-      res.redirect('/share-map.html#' +
+        // we can also pass the token to the browser to make requests from there
+        res.redirect('/share-map.html#' +
         querystring.stringify({
           access_token: access_token,
           refresh_token: refresh_token,
           idValue: idValue
-      }));
-      } //THIS ERROR ROUTE RUNS INSTEAD OF OPENING SHARE MAP 
-        else {
-          console.log(error);
-          console.log(response.statusCode);
+        }));
+      } else {
+        console.log(error);
+        console.log(response.statusCode);
         res.redirect('/#' +
           querystring.stringify({
             error: 'invalid_token'
-        }));
+          }));
       }
     });
   }
