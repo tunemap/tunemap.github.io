@@ -58,7 +58,7 @@ app.get('/login', function(req, res) {
 
 // HERE IS THE REDIRECT URI HANDLER
 app.get('/callback', function (req, res) {
-  
+
   // application requests refresh and access tokens
   // after checking the state parameter
   var code = req.query.code || null;
@@ -214,6 +214,9 @@ app.get('/callbackshare', function (req, res) {
   }
 });
 
+/*
+authorization code in this file based off of Spotify Docs and Spotify github
+*/
 //PORT 
 const port = process.env.PORT || 8888;
 //Start server
