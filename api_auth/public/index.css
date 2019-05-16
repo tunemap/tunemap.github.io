@@ -97,17 +97,21 @@ button.home:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #003a14;
+  color: rgba(255, 255, 255, .75);
+  transition: all 0.5s ease;
+}
+.center_username:hover {
+  background: #147335;
+  color: #FFF;
 }
 #username {
-  color: white;
+  color: inherit;
   font-weight: 700;
   font-size: 4em;
 }
 #username:hover {
   cursor: pointer;
-  /*color: #ccc;*/
-  color: black;
-  background-color: #FFF;
 }
 /*                              */
 h3 {
