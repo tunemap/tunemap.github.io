@@ -58,9 +58,9 @@ app.get('/login', function(req, res) {
 
 // HERE IS THE REDIRECT URI HANDLER
 app.get('/callback', function (req, res) {
+  
   // application requests refresh and access tokens
   // after checking the state parameter
-
   var code = req.query.code || null;
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
@@ -95,19 +95,6 @@ app.get('/callback', function (req, res) {
         // save tokens
         var access_token = body.access_token;
         var refresh_token = body.refresh_token;
-
-        /* var options = {
-          url: 'https://api.spotify.com/v1/me/top/tracks',
-          headers: { 'Authorization': 'Bearer ' + access_token },
-          json: true
-      };
-  
-      // use the access token to access the Spotify Web API
-      request.get(options, function(error, response, body) {
-          if (!error && response.statusCode === 200) {
-            console.log(body);
-          }
-      }); */
 
         // we can also pass the token to the browser to make requests from there
         res.redirect('/image-map.html#' +
@@ -162,7 +149,7 @@ app.get('/login-share', function(req, res) {
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
 
-  // your application requests authorization
+  //requests authorization
   var scope = 'user-read-private user-top-read user-read-email';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
@@ -175,8 +162,7 @@ app.get('/login-share', function(req, res) {
 });
 
 app.get('/callbackshare', function (req, res) {
-  // your application requests refresh and access tokens
-  // after checking the state parameter
+  //requests refresh and access tokens
   var code = req.query.code || null;
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
@@ -210,7 +196,6 @@ app.get('/callbackshare', function (req, res) {
         var access_token = body.access_token;
         var refresh_token = body.refresh_token;
 
-        // we can also pass the token to the browser to make requests from there
         res.redirect('/share-map.html#' +
         querystring.stringify({
           access_token: access_token,

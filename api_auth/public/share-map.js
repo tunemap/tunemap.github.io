@@ -38,7 +38,7 @@
 				success: function(data) {
 					console.log(data);
 					let from_user = document.getElementById('username');
-					from_user.innerHTML = data[0].user + "'s MusicMap";
+					from_user.innerHTML = data[0].user + "'s TuneMap";
 					from_user.onclick = function() {
 						location.assign(data[0].username_url);
 					}
