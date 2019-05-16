@@ -50,7 +50,7 @@ button.home:focus {
 .navbar {
   background: #FFF;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  z-index: 4;
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,13 +97,13 @@ button.home:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #003a14;
+  background: #181b19;
   color: rgba(255, 255, 255, .75);
-  transition: all 0.5s ease;
+  transition: all .75s ease;
 }
 .center_username:hover {
-  background: #147335;
-  color: #FFF;
+  background: #000000;
+  color: #5cb85c;
 }
 #username {
   color: inherit;
